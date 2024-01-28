@@ -332,6 +332,9 @@ video {
   --tw-backdrop-saturate: ;
   --tw-backdrop-sepia: ;
 }
+.container {
+  display: flex;
+}
 .flex {
   display: flex;
 }
@@ -341,6 +344,19 @@ video {
 .flex-none {
   flex: none;
 }
+.left-side,
+.right-side {
+  flex: 1;
+}
+
+.left-side {
+  padding: 10px;
+}
+
+.right-side {
+  padding: 10px;
+}
+
 .transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y))
     rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
@@ -533,8 +549,14 @@ video {
   }
 }
 @media (min-width: 1280px) {
+  .xl\:w-60 {
+    width: 18rem;
+  }
   .xl\:w-56 {
     width: 14rem;
+  }
+  .xl\:w-54 {
+    width: 12rem;
   }
   .xl\:w-\[22\%\] {
     width: 22%;
