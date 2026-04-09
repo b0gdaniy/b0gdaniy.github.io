@@ -5,10 +5,11 @@ Static portfolio site for GitHub Pages.
 ## Structure
 
 - `index.html` contains the page markup and content.
-- `css/build.css` contains the generated utility styles already used by the page.
-- `css/site.css` contains project-specific styles and small overrides.
-- `js/main.js` bootstraps interactive features.
-- `js/modules/phrase-rotator.js` contains the reusable phrase rotation component for the hero section.
+- `css/glitche-basic.css`, `css/glitche-layout.css`, and `css/template-colors/green.css` provide the main visual template styles.
+- `css/ionicons.css` and `fonts/` provide the icon font used in contacts and footer.
+- `css/site.css` contains small local overrides for the template and Bohdan-specific assets.
+- `js/main.js` bootstraps the page behavior: preloader, menu, scroll handling, and dotted skills rendering.
+- `js/modules/phrase-rotator.js` provides the typed text effect for the preloader and hero subtitle.
 
 ## Checks
 
@@ -20,5 +21,5 @@ npm run check
 
 ## Editing the hero phrases
 
-The rotating phrases live in `index.html` inside the element with `data-phrase-rotator`.
-Each phrase is declared as a separate element with the `data-phrase` attribute, so the content and styling stay in markup while the animation stays in JavaScript.
+The rotating hero phrases live in `index.html` inside `.typing-subtitle`.
+Each phrase is declared as a separate `<p>` element, and the typed output is rendered into `.typed-subtitle`.
