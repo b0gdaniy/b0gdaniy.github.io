@@ -30,6 +30,7 @@
 
         document.documentElement.setAttribute('data-theme', theme);
         document.documentElement.lang = language;
+        document.documentElement.style.colorScheme = theme;
       })();
     </script>
 
@@ -94,7 +95,7 @@
             <div class="vertical-center">
               <div class="started-content">
                 <div class="h-title glitch-effect" data-text="I'm Bohdan Pukhno" data-i18n-data-text="hero.titleFull">
-                  <span data-i18n="hero.titlePrefix">I'm</span> <span>Bohdan Pukhno</span>
+                  <span data-i18n="hero.titlePrefix">I'm</span> <span data-i18n="hero.titleName">Bohdan Pukhno</span>
                 </div>
                 <div class="h-subtitle typing-subtitle" data-language-source="en">
                   <p>Lead Web3 Engineer</p>
@@ -102,8 +103,8 @@
                   <p>Zero-Knowledge Verification and Cross-Chain Systems</p>
                 </div>
                 <div class="h-subtitle typing-subtitle" data-language-source="uk">
-                  <p>Lead Web3 Engineer</p>
-                  <p>Розробка та аудит smart contracts</p>
+                  <p>Провідний Web3-інженер</p>
+                  <p>Розробник та аудитор смартконтрактів</p>
                   <p>Zero-Knowledge Verification та Cross-Chain Systems</p>
                 </div>
                 <span class="typed-subtitle" data-typed-source=".typing-subtitle[data-language-source='en']"></span>
