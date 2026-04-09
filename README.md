@@ -5,7 +5,7 @@ Static portfolio site for GitHub Pages.
 ## Structure
 
 - `index.html` contains the page markup and content.
-- `css/glitche-basic.css`, `css/glitche-layout.css`, and `css/template-colors/orange.css` provide the main visual template styles.
+- `css/glitche-basic.css`, `css/glitche-layout.css`, and `css/template-colors/green.css` provide the main visual template styles.
 - `css/ionicons.css` and `fonts/` provide the icon font used in contacts and footer.
 - `css/site.css` contains small local overrides for the template and Bohdan-specific assets.
 - `js/main.js` bootstraps the page behavior: preloader, menu, scroll handling, and dotted skills rendering.
