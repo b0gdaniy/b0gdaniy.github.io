@@ -5,8 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bohdan Pukhno</title>
+    <meta
+      name="description"
+      content="Portfolio of Bohdan Pukhno, smart contract developer and auditor focused on Solidity, TypeScript, and blockchain security."
+    />
+    <meta name="theme-color" content="#15171f" />
     <link href="css/build.css" rel="stylesheet" />
-
+    <link href="css/site.css" rel="stylesheet" />
     <script>
       (function (w, d, s, l, i) {
         w[l] = w[l] || [];
@@ -20,18 +25,9 @@
       })(window, document, 'script', 'dataLayer', 'GTM-KVSR5KWB');
     </script>
 
-    <style>
-      body {
-        background: #15171f;
-        color: white;
-      }
-    </style>
-
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&amp;display=swap" rel="stylesheet" />
-
-    <script src="js/index.umd.js"></script>
   </head>
 
   <body>
@@ -44,7 +40,7 @@
       ></iframe
     ></noscript>
 
-    <div class="cointainer px-4 md:px-8 lg:px-32 pb-32">
+    <div class="page-shell px-4 md:px-8 lg:px-32 pb-32">
       <div class="pt-8 flex flex-wrap md:flex-row gap-0.5 md:gap-6 text-lg md:text-1xl font-medium">
         <div>#standwithukraine 🇺🇦</div>
         <div class="transition ease-in-out delay-150 hover:text-red-400">
@@ -54,9 +50,8 @@
       <div class="flex flex-col flex-wrap lg:flex-row pt-16 md:pt-28 gap-6 lg:gap-12">
         <div>
           <img
-            style="transform: scale(-1, 1)"
             src="images/sticker.webp"
-            class="w-32 xl:w-60"
+            class="is-mirrored w-32 xl:w-60"
             alt="memoji picture of me"
           />
         </div>
@@ -64,17 +59,25 @@
           <p class="text-2xl md:text-5xl font-medium">I want to make world better</p>
           <div class="pt-2 flex flex-col lg:flex-row gap-0 md:gap-6 text-5xl md:text-7xl font-bold leading-snug">
             <div class="flex-none">By improving</div>
-            <div id="color-text">
-              <span class="text-indigo-500">WEB3</span><br /><span class="text-yellow-300">Crypto</span><br /><span
-                class="text-cyan"
-                >Security</span
-              >
+            <div
+              id="color-text"
+              data-phrase-rotator
+              data-typing-delay="200"
+              data-deleting-delay="70"
+              data-pause-after-typing="2000"
+              data-pause-after-deleting="50"
+              aria-label="Areas of focus"
+              aria-live="polite"
+            >
+              <span class="text-indigo-500" data-phrase>WEB3</span><br /><span class="text-yellow-300" data-phrase
+                >Crypto</span
+              ><br /><span class="text-cyan" data-phrase>Security</span>
             </div>
           </div>
         </div>
       </div>
       <div class="pt-16 md:pt-28">
-        <p class="text-2xl md:text-5xl font-medium">What i do</p>
+        <p class="text-2xl md:text-5xl font-medium">What I do</p>
         <div class="flex flex-col flex-wrap md:flex-nowrap md:flex-row pt-4 gap-6 lg:gap-12">
           <div class="flex-1 min-w-0 flex-grow">
             <p class="text-2xl md:text-3xl font-medium text-green">Smart Contracts Developer</p>
@@ -112,9 +115,8 @@
       <div class="flex flex-col flex-wrap lg:flex-row pt-16 md:pt-28 gap-6 lg:gap-12">
         <div>
           <img
-            style="transform: scale(-1, 1)"
             src="images/sticker2.webp"
-            class="w-32 xl:w-54"
+            class="is-mirrored w-32 xl:w-54"
             alt="memoji picture of me"
           />
         </div>
@@ -134,48 +136,32 @@
         <div class="left-side">
           <p class="text-2xl md:text-4xl font-medium">Find me here</p>
           <div class="flex flex-col flex-wrap md:flex-row pt-4 gap-2 lg:gap-6">
-            <a href="https://github.com/b0gdaniy/">
-              <p
-                class="text-2xl md:text-3xl font-medium text-green transition ease-in-out delay-150 hover:text-red-400"
-              >
-                github
-              </p>
-            </a>
-            <a href="mailto:pukhnobg@gmail.com">
-              <p
-                class="text-2xl md:text-3xl font-medium text-green transition ease-in-out delay-150 hover:text-red-400"
-              >
-                @gmail
-              </p>
-            </a>
-            <a href="https://www.linkedin.com/in/bohdan-pukhno/">
-              <p
-                class="text-2xl md:text-3xl font-medium text-green transition ease-in-out delay-150 hover:text-red-400"
-              >
-                linkedin
-              </p>
-            </a>
-            <a href="https://t.me/b0hdaniy">
-              <p
-                class="text-2xl md:text-3xl font-medium text-green transition ease-in-out delay-150 hover:text-red-400"
-              >
-                telegram
-              </p>
-            </a>
+            <a
+              class="text-2xl md:text-3xl font-medium text-green transition ease-in-out delay-150 hover:text-red-400"
+              href="https://github.com/b0gdaniy/"
+              >github</a
+            >
+            <a
+              class="text-2xl md:text-3xl font-medium text-green transition ease-in-out delay-150 hover:text-red-400"
+              href="mailto:pukhnobg@gmail.com"
+              >@gmail</a
+            >
+            <a
+              class="text-2xl md:text-3xl font-medium text-green transition ease-in-out delay-150 hover:text-red-400"
+              href="https://www.linkedin.com/in/bohdan-pukhno/"
+              >linkedin</a
+            >
+            <a
+              class="text-2xl md:text-3xl font-medium text-green transition ease-in-out delay-150 hover:text-red-400"
+              href="https://t.me/b0hdaniy"
+              >telegram</a
+            >
           </div>
         </div>
       </div>
     </div>
 
-    <script>
-      new TypeIt('#color-text', {
-        loop: true,
-        breakLines: false,
-        nextStringDelay: [2000, 50],
-        loopDelay: [50, 2000],
-        cursorChar: ' ',
-        speed: 200,
-      }).go();
-    </script>
+    <script src="js/modules/phrase-rotator.js"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>

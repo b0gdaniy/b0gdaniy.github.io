@@ -1,0 +1,7 @@
+{
+  "name": "bohdanpukhno-portfolio",
+  "private": true,
+  "scripts": {
+    "check": "node --check js/main.js && node --check js/modules/phrase-rotator.js"
+  }
+}

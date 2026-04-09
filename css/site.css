@@ -1,0 +1,24 @@
+:root {
+  color-scheme: dark;
+}
+
+body {
+  background: #15171f;
+  color: #fff;
+}
+
+.page-shell {
+  width: 100%;
+}
+
+.is-mirrored {
+  transform: scale(-1, 1);
+}
+
+[data-phrase-rotator] {
+  line-height: 1;
+}
+
+.phrase-rotator__output {
+  white-space: nowrap;
+}
