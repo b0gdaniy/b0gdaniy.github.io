@@ -58,6 +58,21 @@
       this.timeoutId = window.setTimeout(() => this.tick(), this.options.startDelay);
     }
 
+    destroy() {
+      if (this.timeoutId) {
+        window.clearTimeout(this.timeoutId);
+        this.timeoutId = null;
+      }
+
+      this.output.textContent = '';
+
+      if (this.cursor && this.cursor.parentNode) {
+        this.cursor.parentNode.removeChild(this.cursor);
+      }
+
+      this.cursor = null;
+    }
+
     tick() {
       const currentString = this.strings[this.stringIndex];
 
@@ -126,12 +141,34 @@
         return;
       }
 
+      output._portfolioTypedText = typedText;
       output.dataset.typedReady = 'true';
       typedText.start();
     });
   }
 
+  function refreshTypedText(output) {
+    if (!output) {
+      return;
+    }
+
+    if (output._portfolioTypedText) {
+      output._portfolioTypedText.destroy();
+      delete output._portfolioTypedText;
+    } else {
+      const nextSibling = output.nextElementSibling;
+      if (nextSibling && nextSibling.classList.contains('typed-cursor')) {
+        nextSibling.remove();
+      }
+      output.textContent = '';
+    }
+
+    delete output.dataset.typedReady;
+    initTypedTexts(output.parentNode || document);
+  }
+
   global.PortfolioTypedText = {
     initTypedTexts,
+    refreshTypedText,
   };
 })(window);
