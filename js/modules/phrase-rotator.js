@@ -1,133 +1,137 @@
-(function attachPhraseRotator(global) {
+(function attachTypedText(global) {
   const DEFAULT_OPTIONS = {
-    typingDelay: 200,
-    deletingDelay: 70,
-    pauseAfterTyping: 2000,
-    pauseAfterDeleting: 50,
+    typeSpeed: 55,
+    backSpeed: 28,
+    backDelay: 1000,
+    startDelay: 0,
+    loop: true,
+    showCursor: true,
   };
 
-  function readNumberOption(value, fallback) {
+  function readNumber(value, fallback) {
     const parsed = Number(value);
-
     return Number.isFinite(parsed) ? parsed : fallback;
   }
 
-  function readOptions(container) {
-    return {
-      typingDelay: readNumberOption(container.dataset.typingDelay, DEFAULT_OPTIONS.typingDelay),
-      deletingDelay: readNumberOption(container.dataset.deletingDelay, DEFAULT_OPTIONS.deletingDelay),
-      pauseAfterTyping: readNumberOption(container.dataset.pauseAfterTyping, DEFAULT_OPTIONS.pauseAfterTyping),
-      pauseAfterDeleting: readNumberOption(container.dataset.pauseAfterDeleting, DEFAULT_OPTIONS.pauseAfterDeleting),
-    };
-  }
-
-  function readPhrases(container) {
-    return Array.from(container.querySelectorAll('[data-phrase]'))
-      .map(phraseElement => ({
-        className: phraseElement.className,
-        text: phraseElement.textContent.trim(),
-      }))
-      .filter(phrase => phrase.text.length > 0);
-  }
-
-  class PhraseRotator {
-    constructor(container, phrases, options = {}) {
-      this.container = container;
-      this.phrases = phrases;
-      this.options = { ...DEFAULT_OPTIONS, ...options };
-      this.currentPhraseIndex = 0;
-      this.isRunning = false;
-
-      this.output = document.createElement('span');
-      this.output.className = 'phrase-rotator__output';
-
-      this.container.replaceChildren(this.output);
-      this.container.style.display = 'inline-block';
-      this.container.style.minWidth = `${Math.max(...phrases.map(phrase => phrase.text.length))}ch`;
+  function buildCursor(output, options) {
+    if (!options.showCursor) {
+      return null;
     }
 
-    async start() {
-      if (this.isRunning || this.phrases.length === 0) {
+    const nextSibling = output.nextElementSibling;
+    if (nextSibling && nextSibling.classList.contains('typed-cursor')) {
+      return nextSibling;
+    }
+
+    const cursor = document.createElement('span');
+    cursor.className = 'typed-cursor';
+    cursor.textContent = '|';
+    output.insertAdjacentElement('afterend', cursor);
+    return cursor;
+  }
+
+  class TypedText {
+    constructor(output, strings, options = {}) {
+      this.output = output;
+      this.strings = strings;
+      this.options = { ...DEFAULT_OPTIONS, ...options };
+      this.cursor = buildCursor(output, this.options);
+      this.stringIndex = 0;
+      this.charIndex = 0;
+      this.isDeleting = false;
+      this.timeoutId = null;
+    }
+
+    start() {
+      if (!this.strings.length) {
         return;
       }
 
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        this.showFullPhrase(this.phrases[0]);
+        this.output.textContent = this.strings[0];
+        if (this.cursor) {
+          this.cursor.style.display = 'none';
+        }
         return;
       }
 
-      this.isRunning = true;
+      this.timeoutId = window.setTimeout(() => this.tick(), this.options.startDelay);
+    }
 
-      while (this.isRunning) {
-        const phrase = this.phrases[this.currentPhraseIndex];
+    tick() {
+      const currentString = this.strings[this.stringIndex];
 
-        await this.typePhrase(phrase);
-        await this.wait(this.options.pauseAfterTyping);
-        await this.deletePhrase(phrase);
-        await this.wait(this.options.pauseAfterDeleting);
-
-        this.currentPhraseIndex = (this.currentPhraseIndex + 1) % this.phrases.length;
+      if (this.isDeleting) {
+        this.charIndex -= 1;
+      } else {
+        this.charIndex += 1;
       }
-    }
 
-    async typePhrase(phrase) {
-      for (let visibleCharacters = 1; visibleCharacters <= phrase.text.length; visibleCharacters += 1) {
-        this.renderPhrase(phrase, visibleCharacters);
-        await this.wait(this.options.typingDelay);
+      this.output.textContent = currentString.slice(0, this.charIndex);
+
+      let delay = this.isDeleting ? this.options.backSpeed : this.options.typeSpeed;
+
+      if (!this.isDeleting && this.charIndex === currentString.length) {
+        if (!this.options.loop && this.stringIndex === this.strings.length - 1) {
+          return;
+        }
+
+        this.isDeleting = true;
+        delay = this.options.backDelay;
+      } else if (this.isDeleting && this.charIndex === 0) {
+        this.isDeleting = false;
+        this.stringIndex = (this.stringIndex + 1) % this.strings.length;
+        delay = this.options.typeSpeed;
       }
-    }
 
-    async deletePhrase(phrase) {
-      for (let visibleCharacters = phrase.text.length - 1; visibleCharacters >= 0; visibleCharacters -= 1) {
-        this.renderPhrase(phrase, visibleCharacters);
-        await this.wait(this.options.deletingDelay);
-      }
-    }
-
-    showFullPhrase(phrase) {
-      this.renderPhrase(phrase, phrase.text.length);
-    }
-
-    renderPhrase(phrase, visibleCharacters) {
-      this.output.className = `phrase-rotator__output ${phrase.className}`.trim();
-      this.output.textContent = phrase.text.slice(0, visibleCharacters);
-    }
-
-    wait(delay) {
-      return new Promise(resolve => {
-        window.setTimeout(resolve, delay);
-      });
+      this.timeoutId = window.setTimeout(() => this.tick(), delay);
     }
   }
 
-  function createPhraseRotator(container) {
-    const phrases = readPhrases(container);
+  function createTypedText(output) {
+    const sourceSelector = output.dataset.typedSource;
+    const source = sourceSelector ? document.querySelector(sourceSelector) : null;
 
-    if (phrases.length === 0) {
+    if (!source) {
       return null;
     }
 
-    return new PhraseRotator(container, phrases, readOptions(container));
+    const strings = Array.from(source.querySelectorAll('p'))
+      .map(item => item.textContent.trim())
+      .filter(Boolean);
+
+    if (!strings.length) {
+      return null;
+    }
+
+    const options = {
+      typeSpeed: readNumber(output.dataset.typedSpeed, DEFAULT_OPTIONS.typeSpeed),
+      backSpeed: readNumber(output.dataset.typedBackSpeed, DEFAULT_OPTIONS.backSpeed),
+      backDelay: readNumber(output.dataset.typedBackDelay, DEFAULT_OPTIONS.backDelay),
+      startDelay: readNumber(output.dataset.typedStartDelay, DEFAULT_OPTIONS.startDelay),
+      loop: output.dataset.typedLoop !== 'false',
+      showCursor: output.dataset.typedCursor !== 'false',
+    };
+
+    return new TypedText(output, strings, options);
   }
 
-  function initPhraseRotators(root = document) {
-    const containers = root.querySelectorAll('[data-phrase-rotator]:not([data-phrase-rotator-ready])');
+  function initTypedTexts(root = document) {
+    const outputs = root.querySelectorAll('[data-typed-source]:not([data-typed-ready])');
 
-    containers.forEach(container => {
-      const rotator = createPhraseRotator(container);
+    outputs.forEach(output => {
+      const typedText = createTypedText(output);
 
-      if (!rotator) {
+      if (!typedText) {
         return;
       }
 
-      container.dataset.phraseRotatorReady = 'true';
-      rotator.start();
+      output.dataset.typedReady = 'true';
+      typedText.start();
     });
   }
 
-  global.PortfolioPhraseRotator = {
-    PhraseRotator,
-    createPhraseRotator,
-    initPhraseRotators,
+  global.PortfolioTypedText = {
+    initTypedTexts,
   };
 })(window);
