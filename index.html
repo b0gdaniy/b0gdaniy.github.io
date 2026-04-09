@@ -2,17 +2,36 @@
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Bohdan Pukhno | Lead Web3 Engineer</title>
+    <title data-i18n="meta.title">Bohdan Pukhno | Lead Web3 Engineer</title>
     <meta
       name="description"
       content="Portfolio of Bohdan Pukhno, lead Web3 engineer focused on Solidity smart contracts, RWA tokenization, DeFi systems, and blockchain security."
+      data-i18n-content="meta.description"
     />
     <meta
       name="keywords"
       content="Bohdan Pukhno, lead web3 engineer, smart contract developer, smart contract auditor, Solidity, zero-knowledge verification, cross-chain systems, RWA tokenization, DeFi, Chainlink CCIP"
+      data-i18n-content="meta.keywords"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="theme-color" content="#ffffff" />
+    <script>
+      (function applySavedPreferences() {
+        var theme = 'light';
+        var language = 'en';
+
+        try {
+          theme = localStorage.getItem('portfolio-theme') === 'dark' ? 'dark' : 'light';
+          language = localStorage.getItem('portfolio-language') === 'uk' ? 'uk' : 'en';
+        } catch (error) {
+          theme = 'light';
+          language = 'en';
+        }
+
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.lang = language;
+      })();
+    </script>
 
     <link
       href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,100,300italic,300,100italic,400italic,500,500italic,700,700italic&amp;subset=latin,cyrillic"
@@ -31,10 +50,13 @@
       <div class="centrize full-width">
         <div class="vertical-center">
           <div class="pre-inner">
-            <div class="load typing-load">
+            <div class="load typing-load" data-language-source="en">
               <p>loading...</p>
             </div>
-            <span class="typed-load" data-typed-source=".typing-load"></span>
+            <div class="load typing-load" data-language-source="uk">
+              <p>завантаження...</p>
+            </div>
+            <span class="typed-load" data-typed-source=".typing-load[data-language-source='en']"></span>
           </div>
         </div>
       </div>
@@ -43,15 +65,25 @@
     <div class="container">
       <header>
         <div class="head-top">
-          <a href="#" class="menu-btn" aria-label="Toggle menu"><span></span></a>
+          <a href="#" class="menu-btn" aria-label="Toggle menu" data-i18n-aria-label="controls.menuToggleAria"><span></span></a>
           <div class="top-menu">
             <ul>
-              <li class="active"><a href="#section-about" class="lnk">About</a></li>
-              <li><a href="#section-resume" class="lnk">Resume</a></li>
-              <li><a href="#section-skills" class="lnk">Skills</a></li>
-              <li><a href="#section-services" class="lnk">Projects</a></li>
-              <li><a href="#section-contacts" class="btn">Contact</a></li>
+              <li class="active"><a href="#section-about" class="lnk" data-i18n="menu.about">About</a></li>
+              <li><a href="#section-resume" class="lnk" data-i18n="menu.resume">Resume</a></li>
+              <li><a href="#section-skills" class="lnk" data-i18n="menu.skills">Skills</a></li>
+              <li><a href="#section-services" class="lnk" data-i18n="menu.projects">Projects</a></li>
+              <li><a href="#section-contacts" class="btn" data-i18n="menu.contact">Contact</a></li>
             </ul>
+          </div>
+          <div class="head-actions">
+            <div class="lang-switch" role="group" aria-label="Language selector" data-i18n-aria-label="controls.languageAria">
+              <button type="button" class="control-chip" data-language-switch="en" aria-pressed="true">EN</button>
+              <button type="button" class="control-chip" data-language-switch="uk" aria-pressed="false">UK</button>
+            </div>
+            <button type="button" class="control-chip theme-switch" data-theme-switch aria-label="Toggle theme">
+              <span class="theme-switch__icon ion ion-ios-moon-outline" aria-hidden="true"></span>
+              <span class="theme-switch__label">Dark</span>
+            </button>
           </div>
         </div>
       </header>
@@ -61,29 +93,36 @@
           <div class="centrize full-width">
             <div class="vertical-center">
               <div class="started-content">
-                <div class="h-title glitch-effect" data-text="I'm Bohdan Pukhno">I'm <span>Bohdan Pukhno</span></div>
-                <div class="h-subtitle typing-subtitle">
+                <div class="h-title glitch-effect" data-text="I'm Bohdan Pukhno" data-i18n-data-text="hero.titleFull">
+                  <span data-i18n="hero.titlePrefix">I'm</span> <span>Bohdan Pukhno</span>
+                </div>
+                <div class="h-subtitle typing-subtitle" data-language-source="en">
                   <p>Lead Web3 Engineer</p>
                   <p>Smart Contract Developer and Auditor</p>
                   <p>Zero-Knowledge Verification and Cross-Chain Systems</p>
                 </div>
-                <span class="typed-subtitle" data-typed-source=".typing-subtitle"></span>
+                <div class="h-subtitle typing-subtitle" data-language-source="uk">
+                  <p>Lead Web3 Engineer</p>
+                  <p>Розробка та аудит smart contracts</p>
+                  <p>Zero-Knowledge Verification та Cross-Chain Systems</p>
+                </div>
+                <span class="typed-subtitle" data-typed-source=".typing-subtitle[data-language-source='en']"></span>
               </div>
             </div>
           </div>
-          <a href="#section-about" class="mouse_btn" aria-label="Scroll to next section"><span class="ion ion-mouse"></span></a>
+          <a href="#section-about" class="mouse_btn" aria-label="Scroll to next section" data-i18n-aria-label="controls.scrollAria"><span class="ion ion-mouse"></span></a>
         </div>
 
         <div class="section about" id="section-about">
           <div class="content">
             <div class="title">
-              <div class="title_inner">About Me</div>
+              <div class="title_inner" data-i18n="about.title">About Me</div>
             </div>
             <div class="image">
               <img src="images/sticker.webp" alt="Bohdan Pukhno avatar" />
             </div>
             <div class="desc">
-              <p>
+              <p data-i18n="about.summary">
                 Lead Web3 Engineer with 5+ years of experience in Solidity smart contract development, protocol
                 architecture, and security. I currently lead smart contract development at Swarm Markets, delivering
                 production-grade systems for tokenized real-world assets, DeFi products, zero-knowledge verification,
@@ -91,15 +130,15 @@
               </p>
               <div class="info-list">
                 <ul>
-                  <li><strong>Name:</strong> Bohdan Pukhno</li>
-                  <li><strong>Role:</strong> Lead Web3 Engineer</li>
-                  <li><strong>Experience:</strong> 5+ years in Web3</li>
-                  <li><strong>Location:</strong> Kyiv, Ukraine</li>
-                  <li><strong>E-mail:</strong> pukhnobg@gmail.com</li>
+                  <li data-i18n-html="about.info.name"><strong>Name:</strong> Bohdan Pukhno</li>
+                  <li data-i18n-html="about.info.role"><strong>Role:</strong> Lead Web3 Engineer</li>
+                  <li data-i18n-html="about.info.experience"><strong>Experience:</strong> 5+ years in Web3</li>
+                  <li data-i18n-html="about.info.location"><strong>Location:</strong> Kyiv, Ukraine</li>
+                  <li data-i18n-html="about.info.email"><strong>E-mail:</strong> pukhnobg@gmail.com</li>
                 </ul>
               </div>
               <div class="bts">
-                <a href="mailto:pukhnobg@gmail.com" class="btn fill">Let's talk</a>
+                <a href="mailto:pukhnobg@gmail.com" class="btn fill" data-i18n="about.cta">Let's talk</a>
               </div>
             </div>
             <div class="clear"></div>
@@ -111,13 +150,13 @@
             <div class="cols">
               <div class="col col-md">
                 <div class="title">
-                  <div class="title_inner">Experience</div>
+                  <div class="title_inner" data-i18n="resume.experienceTitle">Experience</div>
                 </div>
                 <div class="resume-items">
                   <div class="resume-item">
                     <div class="date">11/2022 - Present</div>
-                    <div class="name">Lead Smart Contract Developer, Swarm Markets</div>
-                    <p>
+                    <div class="name" data-i18n="resume.experience.0.name">Lead Smart Contract Developer, Swarm Markets</div>
+                    <p data-i18n="resume.experience.0.description">
                       Lead smart contract architecture and delivery for an EU-regulated tokenized asset platform,
                       shipping 40+ production-grade contracts across RWA issuance, OTC trading, staking, asset
                       management, and cross-chain flows.
@@ -125,24 +164,24 @@
                   </div>
                   <div class="resume-item">
                     <div class="date">10/2022 - 07/2024</div>
-                    <div class="name">Smart Contract Auditor &amp; Security Analyst, Hacken</div>
-                    <p>
+                    <div class="name" data-i18n="resume.experience.1.name">Smart Contract Auditor &amp; Security Analyst, Hacken</div>
+                    <p data-i18n="resume.experience.1.description">
                       Audited tokens, staking, vesting, DAOs, marketplaces, upgradeable contracts, and DeFi protocols,
                       then validated and triaged vulnerability reports through HackenProof security workflows.
                     </p>
                   </div>
                   <div class="resume-item">
                     <div class="date">04/2024 - 07/2024</div>
-                    <div class="name">Smart Contract Developer Intern, Nethermind</div>
-                    <p>
+                    <div class="name" data-i18n="resume.experience.2.name">Smart Contract Developer Intern, Nethermind</div>
+                    <p data-i18n="resume.experience.2.description">
                       Researched Starknet and LayerZero implementation patterns, cross-chain contract logic, and
                       interoperability-focused architecture for emerging blockchain infrastructure.
                     </p>
                   </div>
                   <div class="resume-item">
                     <div class="date">03/2024 - 05/2024</div>
-                    <div class="name">Co-Founder &amp; CTO, Hata</div>
-                    <p>
+                    <div class="name" data-i18n="resume.experience.3.name">Co-Founder &amp; CTO, Hata</div>
+                    <p data-i18n="resume.experience.3.description">
                       Co-founded and led technical development of a smart-contract-based platform for real estate
                       agreements and payments, launched at a Chainlink hackathon and later advanced through the Vacuum
                       Deep Tech Acceleration program.
@@ -150,8 +189,8 @@
                   </div>
                   <div class="resume-item active">
                     <div class="date">05/2020 - 10/2022</div>
-                    <div class="name">Freelance Smart Contract Developer, Upwork</div>
-                    <p>
+                    <div class="name" data-i18n="resume.experience.4.name">Freelance Smart Contract Developer, Upwork</div>
+                    <p data-i18n="resume.experience.4.description">
                       Built Solidity contracts, tests, and technical documentation for Ethereum and Polygon projects
                       across DeFi and asset management use cases.
                     </p>
@@ -161,42 +200,42 @@
 
               <div class="col col-md">
                 <div class="title">
-                  <div class="title_inner">Education</div>
+                  <div class="title_inner" data-i18n="resume.educationTitle">Education</div>
                 </div>
                 <div class="resume-items">
                   <div class="resume-item">
                     <div class="date">12/2027</div>
-                    <div class="name">PhD in Electronic Engineering (in progress)</div>
-                    <p>
+                    <div class="name" data-i18n="resume.education.0.name">PhD in Electronic Engineering (in progress)</div>
+                    <p data-i18n="resume.education.0.description">
                       Kyiv Polytechnic Institute, Kyiv, Ukraine.
                     </p>
                   </div>
                   <div class="resume-item">
                     <div class="date">06/2025</div>
-                    <div class="name">Master's Degree in Electronic Engineering</div>
-                    <p>
+                    <div class="name" data-i18n="resume.education.1.name">Master's Degree in Electronic Engineering</div>
+                    <p data-i18n="resume.education.1.description">
                       Kyiv Polytechnic Institute, Kyiv, Ukraine.
                     </p>
                   </div>
                   <div class="resume-item">
                     <div class="date">06/2023</div>
-                    <div class="name">Bachelor's Degree in Electronic Engineering</div>
-                    <p>
+                    <div class="name" data-i18n="resume.education.2.name">Bachelor's Degree in Electronic Engineering</div>
+                    <p data-i18n="resume.education.2.description">
                       Kyiv Polytechnic Institute, Kyiv, Ukraine.
                     </p>
                   </div>
                   <div class="resume-item">
                     <div class="date">2022 - 2024</div>
-                    <div class="name">Hackathons &amp; Recognition</div>
-                    <p>
+                    <div class="name" data-i18n="resume.education.3.name">Hackathons &amp; Recognition</div>
+                    <p data-i18n="resume.education.3.description">
                       BuggyDAO took 2nd place at Kyiv Tech Summit 2022. AragonDAO and Police Oracle won Aragon
                       bounties, and Hata was recognized in the Science Intensive Innovation track.
                     </p>
                   </div>
                   <div class="resume-item active">
-                    <div class="date">Certificates</div>
-                    <div class="name">CBP &amp; CEP</div>
-                    <p>
+                    <div class="date" data-i18n="resume.education.4.date">Certificates</div>
+                    <div class="name" data-i18n="resume.education.4.name">CBP &amp; CEP</div>
+                    <p data-i18n="resume.education.4.description">
                       Certified Bitcoin Professional and Certified Ethereum Professional.
                     </p>
                   </div>
@@ -209,12 +248,12 @@
         <div class="section skills" id="section-skills">
           <div class="content">
             <div class="title">
-              <div class="title_inner">Languages Skills</div>
+              <div class="title_inner" data-i18n="skills.languageTitle">Language Skills</div>
             </div>
             <div class="skills dotted">
               <ul>
                 <li>
-                  <div class="name">Ukrainian / Native</div>
+                  <div class="name" data-i18n="skills.languages.0">Ukrainian / Native</div>
                   <div class="progress">
                     <div class="percentage" style="width: 100%;">
                       <span class="percent">100%</span>
@@ -222,7 +261,7 @@
                   </div>
                 </li>
                 <li>
-                  <div class="name">Russian / Fluent</div>
+                  <div class="name" data-i18n="skills.languages.1">Russian / Fluent</div>
                   <div class="progress">
                     <div class="percentage" style="width: 92%;">
                       <span class="percent">92%</span>
@@ -230,7 +269,7 @@
                   </div>
                 </li>
                 <li>
-                  <div class="name">English / B2</div>
+                  <div class="name" data-i18n="skills.languages.2">English / B2</div>
                   <div class="progress">
                     <div class="percentage" style="width: 76%;">
                       <span class="percent">76%</span>
@@ -245,7 +284,7 @@
         <div class="section skills">
           <div class="content">
             <div class="title">
-              <div class="title_inner">Coding Skills</div>
+              <div class="title_inner" data-i18n="skills.codingTitle">Coding Skills</div>
             </div>
             <div class="skills">
               <ul>
@@ -297,18 +336,18 @@
         <div class="section skills">
           <div class="content">
             <div class="title">
-              <div class="title_inner">Web3 Stack</div>
+              <div class="title_inner" data-i18n="skills.stackTitle">Web3 Stack</div>
             </div>
             <div class="skills list">
               <ul>
-                <li><div class="name">Zero-knowledge verification and cross-chain systems</div></li>
+                <li><div class="name" data-i18n="skills.stack.0">Zero-knowledge verification and cross-chain systems</div></li>
                 <li><div class="name">Foundry, Hardhat, OpenZeppelin, Solady</div></li>
-                <li><div class="name">Slither, MythX, Tenderly, secure testing workflows</div></li>
+                <li><div class="name" data-i18n="skills.stack.1">Slither, MythX, Tenderly, secure testing workflows</div></li>
                 <li><div class="name">viem, ethers.js, wagmi, web3.js, web3.py</div></li>
                 <li><div class="name">Chainlink, Chainlink CCIP, The Graph</div></li>
                 <li><div class="name">LayerZero, Starknet, Aztec</div></li>
                 <li><div class="name">RWA tokenization, DeFi, OTC protocols, subgraphs</div></li>
-                <li><div class="name">Smart contract security, auditing, and exploit prevention</div></li>
+                <li><div class="name" data-i18n="skills.stack.2">Smart contract security, auditing, and exploit prevention</div></li>
               </ul>
             </div>
           </div>
@@ -317,29 +356,29 @@
         <div class="section service" id="section-services">
           <div class="content">
             <div class="title">
-              <div class="title_inner">Selected Projects</div>
+              <div class="title_inner" data-i18n="projects.title">Selected Projects</div>
             </div>
             <div class="service-items">
               <div class="service-item">
                 <div class="icon"><span class="ion ion-cube"></span></div>
-                <div class="name">Asset Tokenization &amp; RWAs</div>
-                <p>
+                <div class="name" data-i18n="projects.items.0.name">Asset Tokenization &amp; RWAs</div>
+                <p data-i18n="projects.items.0.description">
                   Built contract systems for tokenized stocks, U.S. Treasury bills, BlackRock ETFs, gold-backed NFTs,
                   and bundled NFT vaults with secure lifecycle management.
                 </p>
               </div>
               <div class="service-item">
                 <div class="icon"><span class="ion ion-arrow-swap"></span></div>
-                <div class="name">dOTC Protocol</div>
-                <p>
+                <div class="name" data-i18n="projects.items.1.name">dOTC Protocol</div>
+                <p data-i18n="projects.items.1.description">
                   Designed a decentralized OTC trading protocol with Chainlink price feeds, KYC/AML verification, and
                   atomic escrow-based settlement for regulated tokenized assets.
                 </p>
               </div>
               <div class="service-item">
                 <div class="icon"><span class="ion ion-home"></span></div>
-                <div class="name">Hata</div>
-                <p>
+                <div class="name" data-i18n="projects.items.2.name">Hata</div>
+                <p data-i18n="projects.items.2.description">
                   Co-founded a smart-contract-based platform for real estate agreements and payments, launched at a
                   Chainlink hackathon, and advanced it into deep-tech acceleration.
                 </p>
@@ -351,27 +390,27 @@
         <div class="section contacts" id="section-contacts">
           <div class="content">
             <div class="title">
-              <div class="title_inner">Contacts</div>
+              <div class="title_inner" data-i18n="contacts.title">Contacts</div>
             </div>
             <div class="service-items">
               <div class="service-item">
                 <div class="icon"><span class="ion ion-social-github"></span></div>
-                <div class="name">GitHub</div>
+                <div class="name" data-i18n="contacts.items.github">GitHub</div>
                 <p><a href="https://github.com/b0gdaniy/" target="_blank" rel="noreferrer">@b0gdaniy</a></p>
               </div>
               <div class="service-item">
                 <div class="icon"><span class="ion ion-email"></span></div>
-                <div class="name">E-mail</div>
+                <div class="name" data-i18n="contacts.items.email">E-mail</div>
                 <p><a href="mailto:pukhnobg@gmail.com">pukhnobg@gmail.com</a></p>
               </div>
               <div class="service-item">
                 <div class="icon"><span class="ion ion-social-linkedin"></span></div>
-                <div class="name">LinkedIn</div>
+                <div class="name" data-i18n="contacts.items.linkedin">LinkedIn</div>
                 <p><a href="https://www.linkedin.com/in/bohdan-pukhno/" target="_blank" rel="noreferrer">bohdan-pukhno</a></p>
               </div>
               <div class="service-item">
                 <div class="icon"><span class="ion ion-ios-navigate"></span></div>
-                <div class="name">Telegram</div>
+                <div class="name" data-i18n="contacts.items.telegram">Telegram</div>
                 <p><a href="https://t.me/b0hdaniy" target="_blank" rel="noreferrer">@b0hdaniy</a></p>
               </div>
             </div>
