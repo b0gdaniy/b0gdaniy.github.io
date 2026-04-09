@@ -41,6 +41,7 @@
       },
       hero: {
         titlePrefix: "I'm",
+        titleName: 'Bohdan Pukhno',
         titleFull: "I'm Bohdan Pukhno",
       },
       about: {
@@ -154,9 +155,9 @@
     },
     uk: {
       meta: {
-        title: 'Bohdan Pukhno | Lead Web3 Engineer',
+        title: 'Bohdan Pukhno | Провідний Web3-інженер',
         description:
-          'Портфоліо Богдана Пухна, lead Web3 engineer, з фокусом на Solidity smart contracts, RWA tokenization, DeFi systems, zero-knowledge verification та blockchain security.',
+          'Портфоліо Богдана Пухна, провідного Web3-інженера, з фокусом на Solidity smart contracts, RWA tokenization, DeFi systems, zero-knowledge verification та blockchain security.',
         keywords:
           'Bohdan Pukhno, lead web3 engineer, smart contract developer, smart contract auditor, Solidity, zero-knowledge verification, cross-chain systems, RWA tokenization, DeFi, Chainlink CCIP',
       },
@@ -177,15 +178,16 @@
       },
       hero: {
         titlePrefix: 'Я',
-        titleFull: 'Я і Богдан Пухно',
+        titleName: 'Богдан Пухно',
+        titleFull: 'Я Богдан Пухно',
       },
       about: {
         title: 'Про мене',
         summary:
-          'Lead Web3 Engineer з 5+ роками досвіду в розробці Solidity smart contracts, архітектурі протоколів і безпеці. Зараз я очолюю напрям smart contract development у Swarm Markets, де доставляю production-grade системи для tokenized real-world assets, DeFi-продуктів, zero-knowledge verification та cross-chain asset flows в EVM-екосистемах.',
+          'Провідний Web3-інженер із 5+ роками досвіду в розробці Solidity smart contracts, архітектурі протоколів і безпеці. Зараз я очолюю напрям smart contract development у Swarm Markets, де доставляю production-grade системи для tokenized real-world assets, DeFi-продуктів, zero-knowledge verification та cross-chain asset flows в EVM-екосистемах.',
         info: {
           name: "<strong>Ім'я:</strong> Bohdan Pukhno",
-          role: '<strong>Роль:</strong> Lead Web3 Engineer',
+          role: '<strong>Роль:</strong> Провідний Web3-інженер',
           experience: '<strong>Досвід:</strong> 5+ років у Web3',
           location: '<strong>Локація:</strong> Київ, Україна',
           email: '<strong>E-mail:</strong> pukhnobg@gmail.com',
@@ -196,27 +198,27 @@
         experienceTitle: 'Досвід',
         experience: [
           {
-            name: 'Lead Smart Contract Developer, Swarm Markets',
+            name: 'Провідний розробник смартконтрактів, Swarm Markets',
             description:
               'Очолюю архітектуру та delivery smart contracts для EU-regulated платформи токенізованих активів, де випустив 40+ production-grade контрактів для RWA issuance, OTC trading, staking, asset management і cross-chain flows.',
           },
           {
-            name: 'Smart Contract Auditor & Security Analyst, Hacken',
+            name: 'Аудитор смартконтрактів та аналітик безпеки, Hacken',
             description:
               'Аудитував токени, staking, vesting, DAO, marketplace, upgradeable contracts і DeFi-протоколи, а також валідував і тріажив vulnerability reports у процесах HackenProof.',
           },
           {
-            name: 'Smart Contract Developer Intern, Nethermind',
+            name: 'Стажер-розробник смартконтрактів, Nethermind',
             description:
               'Досліджував implementation patterns для Starknet і LayerZero, cross-chain contract logic та архітектурні підходи для emerging blockchain infrastructure.',
           },
           {
-            name: 'Co-Founder & CTO, Hata',
+            name: 'Співзасновник та CTO, Hata',
             description:
               'Співзаснував і очолив технічну розробку smart-contract-based платформи для угод і платежів у сфері нерухомості, запущеної на Chainlink hackathon та розвиненої в межах Vacuum Deep Tech Acceleration.',
           },
           {
-            name: 'Freelance Smart Contract Developer, Upwork',
+            name: 'Фриланс-розробник смартконтрактів, Upwork',
             description:
               'Розробляв Solidity contracts, тести й технічну документацію для Ethereum- і Polygon-проєктів у DeFi та asset management напрямах.',
           },
@@ -555,7 +557,9 @@
     const normalizedTheme = theme === 'dark' ? 'dark' : 'light';
 
     document.documentElement.setAttribute('data-theme', normalizedTheme);
+    document.documentElement.style.colorScheme = normalizedTheme;
     document.body.classList.toggle('is-dark', normalizedTheme === 'dark');
+    document.body.setAttribute('data-theme', normalizedTheme);
 
     if (persist) {
       writeStorage(STORAGE_KEYS.theme, normalizedTheme);
