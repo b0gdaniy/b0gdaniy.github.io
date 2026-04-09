@@ -10,7 +10,8 @@
   --site-chip-text: #141414;
 }
 
-html[data-theme='dark'] {
+html[data-theme='dark'],
+body.is-dark {
   --site-bg: #0b1117;
   --site-surface: #101820;
   --site-text: #edf4ee;
@@ -160,6 +161,12 @@ header .head-top .top-menu {
   min-width: 92px;
 }
 
+.theme-switch,
+.theme-switch__label,
+.theme-switch__icon {
+  color: var(--site-chip-text);
+}
+
 .theme-switch__icon {
   font-size: 16px;
 }
@@ -203,15 +210,31 @@ footer .soc a {
 
 html[data-theme='dark'] body,
 html[data-theme='dark'] header,
-html[data-theme='dark'] .preloader {
+html[data-theme='dark'] .preloader,
+html[data-theme='dark'] .container,
+html[data-theme='dark'] footer,
+html[data-theme='dark'] .popup-box,
+body.is-dark,
+body.is-dark header,
+body.is-dark .preloader,
+body.is-dark .container,
+body.is-dark footer,
+body.is-dark .popup-box {
   background: var(--site-surface);
 }
 
-html[data-theme='dark'] body {
+html[data-theme='dark'] body,
+body.is-dark {
   background: var(--site-bg);
 }
 
-html[data-theme='dark'] header {
+html[data-theme='dark'] .container,
+body.is-dark .container {
+  background: var(--site-bg) !important;
+}
+
+html[data-theme='dark'] header,
+body.is-dark header {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
 }
 
@@ -230,7 +253,23 @@ html[data-theme='dark'] .service-items .service-item .name,
 html[data-theme='dark'] .service-items .service-item p,
 html[data-theme='dark'] .service-items .service-item p a,
 html[data-theme='dark'] .info-list ul li,
-html[data-theme='dark'] footer .soc a .ion {
+html[data-theme='dark'] footer .soc a .ion,
+body.is-dark a,
+body.is-dark p,
+body.is-dark .top-menu ul li a,
+body.is-dark .section .content .title .title_inner,
+body.is-dark .section.started .started-content .h-title,
+body.is-dark .section.started .started-content .typed-subtitle,
+body.is-dark .section.started .started-content .h-subtitle,
+body.is-dark .resume-items .resume-item .name,
+body.is-dark .resume-items .resume-item p,
+body.is-dark .skills ul li .name,
+body.is-dark .skills ul li .progress .percentage .percent,
+body.is-dark .service-items .service-item .name,
+body.is-dark .service-items .service-item p,
+body.is-dark .service-items .service-item p a,
+body.is-dark .info-list ul li,
+body.is-dark footer .soc a .ion {
   color: var(--site-text);
 }
 
@@ -238,22 +277,44 @@ html[data-theme='dark'] .resume-items .resume-item p,
 html[data-theme='dark'] .service-items .service-item p,
 html[data-theme='dark'] .skills ul li .name,
 html[data-theme='dark'] .skills ul li .progress .percentage .percent,
-html[data-theme='dark'] .info-list ul li {
+html[data-theme='dark'] .info-list ul li,
+html[data-theme='dark'] .copy,
+body.is-dark .resume-items .resume-item p,
+body.is-dark .service-items .service-item p,
+body.is-dark .skills ul li .name,
+body.is-dark .skills ul li .progress .percentage .percent,
+body.is-dark .info-list ul li,
+body.is-dark .copy {
   color: var(--site-muted);
+}
+
+html[data-theme='dark'] .section,
+html[data-theme='dark'] footer,
+html[data-theme='dark'] .popup-box,
+body.is-dark .section,
+body.is-dark footer,
+body.is-dark .popup-box {
+  background: transparent !important;
 }
 
 html[data-theme='dark'] header .head-top .menu-btn:before,
 html[data-theme='dark'] header .head-top .menu-btn:after,
-html[data-theme='dark'] header .head-top .menu-btn span {
+html[data-theme='dark'] header .head-top .menu-btn span,
+body.is-dark header .head-top .menu-btn:before,
+body.is-dark header .head-top .menu-btn:after,
+body.is-dark header .head-top .menu-btn span {
   background: var(--site-text);
 }
 
-html[data-theme='dark'] .skills ul li .progress {
+html[data-theme='dark'] .skills ul li .progress,
+body.is-dark .skills ul li .progress {
   background: var(--site-soft);
 }
 
 html[data-theme='dark'] a.btn,
-html[data-theme='dark'] .btn {
+html[data-theme='dark'] .btn,
+body.is-dark a.btn,
+body.is-dark .btn {
   color: var(--site-text);
   border-color: rgba(237, 244, 238, 0.2);
 }
@@ -262,35 +323,76 @@ html[data-theme='dark'] a.btn.fill,
 html[data-theme='dark'] .btn.fill,
 html[data-theme='dark'] a.btn:hover,
 html[data-theme='dark'] .btn:hover,
-html[data-theme='dark'] header .head-top .top-menu ul li.active .btn {
+html[data-theme='dark'] header .head-top .top-menu ul li.active .btn,
+body.is-dark a.btn.fill,
+body.is-dark .btn.fill,
+body.is-dark a.btn:hover,
+body.is-dark .btn:hover,
+body.is-dark header .head-top .top-menu ul li.active .btn {
   color: #ffffff;
 }
 
-html[data-theme='dark'] .skills.dotted ul li .progress .dg span {
+html[data-theme='dark'] .skills.dotted ul li .progress .dg span,
+body.is-dark .skills.dotted ul li .progress .dg span {
   background: var(--site-soft) !important;
 }
 
-html[data-theme='dark'] .section.about .image img {
+html[data-theme='dark'] .section.about .image img,
+body.is-dark .section.about .image img {
   box-shadow: 0 0 0 1px rgba(237, 244, 238, 0.12);
 }
 
-html[data-theme='dark'] .typed-cursor {
+html[data-theme='dark'] .theme-switch,
+html[data-theme='dark'] .theme-switch__label,
+html[data-theme='dark'] .theme-switch__icon,
+body.is-dark .theme-switch,
+body.is-dark .theme-switch__label,
+body.is-dark .theme-switch__icon {
+  color: var(--site-chip-text) !important;
+}
+
+@media (min-width: 580px) {
+  html[data-theme='dark'] .glitch-effect:before,
+  html[data-theme='dark'] .glitch-effect:after,
+  body.is-dark .glitch-effect:before,
+  body.is-dark .glitch-effect:after {
+    background: var(--site-bg);
+  }
+}
+
+html[data-theme='dark'] .popup-box .desc h4,
+body.is-dark .popup-box .desc h4 {
+  color: var(--site-text);
+}
+
+html[data-theme='dark'] .typed-cursor,
+body.is-dark .typed-cursor {
   color: var(--site-accent);
 }
 
 html[data-theme='dark'] .lang-switch,
-html[data-theme='dark'] .control-chip {
+html[data-theme='dark'] .control-chip,
+body.is-dark .lang-switch,
+body.is-dark .control-chip {
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
 }
 
-html[data-theme='dark'] header.active .head-top .top-menu {
+html[data-theme='dark'] header.active .head-top .top-menu,
+body.is-dark header.active .head-top .top-menu {
   background: var(--site-surface);
   border: 1px solid var(--site-chip-border);
   border-radius: 18px;
   box-shadow: 0 18px 45px rgba(0, 0, 0, 0.3);
 }
 
-html[data-theme='dark'] .container .line {
+html[data-theme='dark'] .top-menu ul li a.btn,
+body.is-dark .top-menu ul li a.btn {
+  background: var(--site-accent);
+  border-color: var(--site-accent);
+}
+
+html[data-theme='dark'] .container .line,
+body.is-dark .container .line {
   opacity: 0.85;
 }
 
